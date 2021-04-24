@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import List from "@material-ui/core/List";
 import { Divider , Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles"
-import styles from "./styles.js"
-import SidebarItem from "../SidebarItem/sidebarItem"
-import { useFirestore } from "../firebase/firebase";
+import styles from "./Styles.js"
+import SidebarItem from "../SidebarItem/SidebarItem"
+import { useFirestore } from "../Firebase/Firebase";
 import firebase from "firebase"
 
 

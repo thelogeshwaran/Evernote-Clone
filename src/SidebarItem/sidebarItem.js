@@ -5,7 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { removeHTMLTags } from "../helpers";
-import {useFirestore} from "../firebase/firebase";
+import {useFirestore} from "../Firebase/Firebase";
 
 
 function SidebarItem({classes , note, selectNote, setSelectNote}){

@@ -3,7 +3,7 @@ import ReactQuill from 'react-quill';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
-import {useFirestore} from "../firebase/firebase"
+import {useFirestore} from "../Firebase/Firebase"
 
 
 function Editor({classes, selectNote}){
@@ -39,7 +39,25 @@ function Editor({classes, selectNote}){
         }
 
     },[text,title])
-   
+
+   const modules = {
+        toolbar: [
+          [{ 'header': [1, 2,3,4,5,6, false] }],
+          ['bold', 'italic'],
+          ['bold', 'italic', 'underline','strike', 'blockquote'],
+          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+          ['link', 'image'],
+          ['clean'],
+          [{ 'color': [] }, { 'background': [] }],
+        ],
+      }
+
+
+      const editor = this.reactQuillRef.getEditor();
+const unprivilegedEditor = this.reactQuillRef.makeUnprivilegedEditor(editor);
+// You may now use the unprivilegedEditor proxy methods
+unprivilegedEditor.getText();
+
     
     return (
         <div className={classes.editorContainer}>
@@ -47,7 +65,7 @@ function Editor({classes, selectNote}){
                 <input className={classes.titleInput} placeholder="Note Title" value ={title}  onChange={(e)=> setTitle(e.target.value)}>
                 </input>
             
-            <ReactQuill value={text} onChange={(val)=> setText(val)}>
+            <ReactQuill value={text} onChange={(val)=> setText(val)} modules={modules}>
             </ReactQuill>
         </div>
     )

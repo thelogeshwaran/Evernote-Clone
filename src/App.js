@@ -1,9 +1,9 @@
 import "./App.css"
 import React,{useEffect, useState} from "react";
-import { useFirestore } from "./firebase/firebase";
+import { useFirestore } from "./Firebase/Firebase";
 import './App.css';
-import Editor from "./Editor/editor";
-import Sidebar from "./Sidebar/sidebar";
+import Editor from "./Editor/Editor";
+import Sidebar from "./Sidebar/Sidebar";
 
 function App() {
   const [notes, setNotes]= useState([])
