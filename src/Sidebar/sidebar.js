@@ -6,20 +6,21 @@ import styles from "./Styles.js"
 import SidebarItem from "../SidebarItem/SidebarItem"
 import { useFirestore } from "../Firebase/Firebase";
 import firebase from "firebase"
+import { useNotes } from "../Context/NotesProvider.js";
 
 
 
 
-function Sidebar({classes , notes, selectNote , setSelectNote}){
+function Sidebar({classes}){
 
+    const { notes, setSelectNote } = useNotes();
+    // console.log("notes")
     const [title , setTitle] = useState("");
     const [ addingNote , setAddingNote] = useState(false);
-    const [ notesAdded , setNotesAdded] = useState(null)
     
     useEffect(()=>{
-      
         setSelectNote(notes[0])
-    },[notesAdded])
+    },[title])
 
 
     function newNoteClick(){
@@ -41,18 +42,17 @@ function Sidebar({classes , notes, selectNote , setSelectNote}){
         )
         setAddingNote(!addingNote);
         setTitle("");
-        setNotesAdded(!notesAdded)
         
     }
 
     return(
         <div
-        className={classes.sidebarContainer}>
-        <Button className={classes.newNoteBtn} onClick={ () => newNoteClick()}>{addingNote ? "CANCEL" : "NEW NOTE"}</Button>
+        className={ classes.sidebarContainer }>
+        <Button className={ classes.newNoteBtn } onClick={ () => newNoteClick() }>{ addingNote ? "CANCEL" : "NEW NOTE" }</Button>
         {
             addingNote ? <div>
-                <input className={ classes.newNoteInput} placeholder="Enter a new title" onKeyUp={ (e)=> setTitle(e.target.value)}></input>
-                <Button  className={classes.newNoteSubmitBtn} onClick={()=> newNoteSubmit()} disabled={ !title}>SUBMIT</Button>
+                <input className={ classes.newNoteInput } placeholder="Enter a new title" onKeyUp={ (e)=> setTitle(e.target.value) }></input>
+                <Button  className={ classes.newNoteSubmitBtn } onClick={()=> newNoteSubmit()} disabled={ !title }>SUBMIT</Button>
             </div> 
             
             
@@ -60,13 +60,17 @@ function Sidebar({classes , notes, selectNote , setSelectNote}){
   
         }
         <List>
+            <div style={{display:"flex", justifyContent:"space-around"}}>
+                <div>Title </div>
+                <div>Tags</div>
+            </div>
             {
                 notes.map((note, index)=>{
                     return (
                         <div key={index}>
-                            <SidebarItem note={note} selectNote= {selectNote} setSelectNote={setSelectNote}>
-                        </SidebarItem>
-                        <Divider></Divider>
+                            <SidebarItem note={note}>
+                            </SidebarItem>
+                            <Divider></Divider>
                         </div>
                         
                     )

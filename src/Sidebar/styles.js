@@ -19,13 +19,13 @@ const styles = theme => ({
     newNoteBtn: {
       width: '100%',
       height: '35px',
-      borderBottom: '1px solid black',
+      // borderBottom: '1px solid black',
       borderRadius: '0px',
-      backgroundColor: '#29487d',
+      backgroundColor: '#1FD41F',
       color: 'white',
-      // '&:hover': {
-      //   backgroundColor: '#88a2ce'
-      // }
+      '&:hover': {
+        backgroundColor: 'green'
+      }
     },
     sidebarContainer: {
       marginTop: '0px',

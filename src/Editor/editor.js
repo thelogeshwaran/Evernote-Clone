@@ -3,16 +3,21 @@ import ReactQuill from 'react-quill';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
-import {useFirestore} from "../Firebase/Firebase"
+import {useFirestore} from "../Firebase/Firebase";
+import { useNotes } from "../Context/NotesProvider";
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+import "../App.css"
 
 
-function Editor({classes, selectNote}){
+function Editor({classes}){
 
+    const { selectNote } = useNotes();
     const [ text, setText ] = useState("");
     const [title , setTitle] = useState("")
 
     useEffect(()=>{
-        // console.log(selectNote.data.body)
+        console.log(selectNote.data.body)
         setTitle(selectNote.data.title)
          setText(selectNote.data.body) 
     },[selectNote])
@@ -43,30 +48,34 @@ function Editor({classes, selectNote}){
    const modules = {
         toolbar: [
           [{ 'header': [1, 2,3,4,5,6, false] }],
-          ['bold', 'italic'],
-          ['bold', 'italic', 'underline','strike', 'blockquote'],
+          [{ 'font': [] }],
+          ['bold', 'italic', 'underline','strike', 'blockquote','code-block'],
+          [{ 'script': 'sub'}, { 'script': 'super' }],
           [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
           ['link', 'image'],
-          ['clean'],
           [{ 'color': [] }, { 'background': [] }],
+          ['clean'],
+          
         ],
       }
 
 
-      const editor = this.reactQuillRef.getEditor();
-const unprivilegedEditor = this.reactQuillRef.makeUnprivilegedEditor(editor);
-// You may now use the unprivilegedEditor proxy methods
-unprivilegedEditor.getText();
-
     
     return (
         <div className={classes.editorContainer}>
+            <div className="title-editor">
             <BorderColorIcon className={classes.editIcon}></BorderColorIcon>
                 <input className={classes.titleInput} placeholder="Note Title" value ={title}  onChange={(e)=> setTitle(e.target.value)}>
                 </input>
+            </div>
+                
             
             <ReactQuill value={text} onChange={(val)=> setText(val)} modules={modules}>
             </ReactQuill>
+            <div>
+                <LocalOfferIcon/> 
+                <BookmarkIcon/> 
+            </div>
         </div>
     )
 }

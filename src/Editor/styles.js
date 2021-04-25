@@ -13,21 +13,23 @@ const styles = theme => ({
     border: 'none',
     padding: '5px',
     fontSize: '24px',
-    width: 'calc(100% - 300px)',
-    backgroundColor: '#29487d',
+    width: 'calc(100%)',
+    backgroundColor: '#1FD41F',
     color: 'white',
-    paddingLeft: '50px'
+    paddingLeft: '20px'
   },
   editIcon: {
-    position: 'absolute',
-    left: '310px',
-    top: '12px',
-    color: 'white',
-    width: '10',
-    height: '10'
+    // position: 'absolute',
+    // left: '580px',
+    // top: '12px',
+    color: 'black',
+    width: '30px',
+    height: '30px',
+    backgroundColor:'#1FD41F',
+    paddingLeft: "10px"
   },
   editorContainer: {
-    height: '100%',
+    height: '85%',
     boxSizing: 'border-box'
   }
 });

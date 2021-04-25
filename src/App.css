@@ -4,16 +4,13 @@ html, body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 #evernote-container {
   height: 100%;
   box-sizing: border-box;
 }
-.app-container {
-  height: 100%;
-  box-sizing: border-box;
-}
+
 .quill {
   height: 100%;
   box-sizing: border-box;
@@ -38,3 +35,128 @@ html, body {
   left: calc(50% - 165px);
 }
   
+.app-container {
+  height: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 2fr 9fr;
+  /* grid-template-areas: "header content"; */
+}
+
+.navigation{
+  /* border: 1px solid black; */
+  /* grid-area: "header"; */
+  height: 100%;
+}
+
+.content{
+  /* border: 1px solid black; */
+  /* grid-area: "content"; */
+  height: 100%;
+}
+
+/* Navigation Bar */
+.nav-tab{
+  /* position: fixed; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid black;
+  min-height: 100vh;
+  min-width: 10%;
+  background-color: #222222;
+  color: white;
+  
+}
+
+.unordered-list {
+  list-style: none;
+  padding:5%;
+  padding-top: 20%;
+}
+
+.list button {
+  background-color: inherit;
+  color: white;
+  border: none;
+  padding-left: 5%;
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  align-items:center;
+  margin-bottom: 10%;
+  padding: 4%
+}
+
+.new-note-list{
+  background-color: rgb(31, 212, 31);
+  border-radius: 50px;
+  padding: 5%;
+}
+
+
+.search{
+  width: 100%;
+  border-radius: 50px;
+  border: none;
+  background-color: #3F403F;
+  color: white;
+}
+
+.search-list{
+  background-color: #3F403F;
+  border-radius: 50px;
+}
+
+
+/* Home page */
+
+
+.notes{
+  margin: 5%;
+  padding: 3%;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 30px;
+  /* border: 1px solid black; */
+  height: 60%;
+  overflow-y: scroll  ;
+  
+}
+.cards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 2%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+body::-webkit-scrollbar {
+  width: 1em;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+
+/* Title Editor */
+
+.title-editor{
+  display: flex;
+  /* width: 100%; */
+  background-color: #1FD41F;
+  justify-content: center;
+  align-items: center;
+}

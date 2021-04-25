@@ -6,9 +6,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { removeHTMLTags } from "../helpers";
 import {useFirestore} from "../Firebase/Firebase";
+import { useNotes } from '../Context/NotesProvider';
 
 
-function SidebarItem({classes , note, selectNote, setSelectNote}){
+function SidebarItem({classes, note}){
+
+    const { selectNote, setSelectNote } = useNotes();
+   
+
     async function deleteNote(note){
         
         await useFirestore
@@ -25,7 +30,7 @@ function SidebarItem({classes , note, selectNote, setSelectNote}){
             <ListItem className={classes.listIem} selected ={selectNote ? selectNote.id === note.id : null} alignItems="flex-start" onClick={()=>setSelectNote(note)}>
                 <div className={classes.textSection} >
                     <ListItemText primary={note.data.title} secondary={removeHTMLTags(note.data.body.substring(0,30)+"...")}></ListItemText>
-                    <DeleteIcon className={classes.deleteIcon} onClick={ () => deleteNote(note)}></DeleteIcon>
+                    {/* <DeleteIcon className={classes.deleteIcon} onClick={ () => deleteNote(note)}></DeleteIcon> */}
                 </div>
             </ListItem>
         </div>
