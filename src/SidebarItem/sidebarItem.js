@@ -3,10 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import DeleteIcon from '@material-ui/icons/Delete';
 import { removeHTMLTags } from "../helpers";
 import {useFirestore} from "../Firebase/Firebase";
 import { useNotes } from '../Context/NotesProvider';
+import "../App.css"
 
 
 function SidebarItem({classes, note}){
@@ -14,25 +14,22 @@ function SidebarItem({classes, note}){
     const { selectNote, setSelectNote } = useNotes();
    
 
-    async function deleteNote(note){
-        
-        await useFirestore
-        .collection("notes")
-        .doc(note.id)
-        .delete()
-        setSelectNote(null)
-    }
+    
 
 
     // console.log(note)
     return(
-        <div>
-            <ListItem className={classes.listIem} selected ={selectNote ? selectNote.id === note.id : null} alignItems="flex-start" onClick={()=>setSelectNote(note)}>
-                <div className={classes.textSection} >
-                    <ListItemText primary={note.data.title} secondary={removeHTMLTags(note.data.body.substring(0,30)+"...")}></ListItemText>
-                    {/* <DeleteIcon className={classes.deleteIcon} onClick={ () => deleteNote(note)}></DeleteIcon> */}
-                </div>
-            </ListItem>
+        <div className="note" onClick={()=>setSelectNote(note)} style={selectNote?.id === note.id ?  {backgroundColor:"#ECFDF5"} : {backgroundColor:"inherit"}}>
+            <div>
+                <ListItem className={classes.listItem} >
+                    <div  className={classes.textSection} >
+                        <ListItemText  primary={note.data.title.length > 25 ? note.data.title.substring(0,25)+"...": note.data.title} secondary={removeHTMLTags(note.data.body.substring(0,25)+"...")}></ListItemText>
+                    </div>
+                </ListItem>
+            </div>
+            <div className="note-tag">
+                {note.data.tag}
+            </div>
         </div>
     )
 }

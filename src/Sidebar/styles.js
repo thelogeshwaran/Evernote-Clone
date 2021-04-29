@@ -4,7 +4,7 @@ const styles = theme => ({
       height: 'calc(100% - 35px)',
       position: 'absolute',
       left: '0',
-      width: '300px',
+      width: '400px',
       boxShadow: '0px 0px 2px black'
     },
     newChatBtn: {
@@ -18,10 +18,10 @@ const styles = theme => ({
     },
     newNoteBtn: {
       width: '100%',
-      height: '35px',
+      height: '30px',
       // borderBottom: '1px solid black',
       borderRadius: '0px',
-      backgroundColor: '#1FD41F',
+      backgroundColor: '#16A34A',
       color: 'white',
       '&:hover': {
         backgroundColor: 'green'
@@ -29,12 +29,15 @@ const styles = theme => ({
     },
     sidebarContainer: {
       marginTop: '0px',
-      width: '300px',
-      height: '100%',
+      width: '30%',
+      height: '100vh',
       boxSizing: 'border-box',
       float: 'left',
-      overflowY: 'scroll',
-      overflowX: 'hidden'
+      overflowY: 'auto',
+      overflowX: 'hidden',
+      paddingBottom:"3%",
+      borderRight:"1px solid grey"
+      // border:"2px solid black"
     },
     newNoteInput: {
       width: '100%',
@@ -44,14 +47,40 @@ const styles = theme => ({
       border: 'none',
       paddingLeft: '5px',
       '&:focus': {
-        outline: '2px solid rgba(81, 203, 238, 1)'
+        border: '2px solid rgba(81, 203, 238, 1)'
       }
     },
     newNoteSubmitBtn: {
       width: '100%',
       backgroundColor: '#28787c',
       borderRadius: '0px',
-      color: 'white'
+      color: 'white',
+      height:"30px",
+      '&:hover': {
+        backgroundColor: '#28787C'
+      }
+    },
+    sidebarHeading:{
+      display:"flex",
+      flexDirection:"row",
+      justifyContent:"space-between",
+      alignItems:"center",
+      margin: "2%",
+      padding:"0 5%",
+      paddingBottom: "2%",
+      border:"1px solid #6B7280"
+    },
+    sidebarContent:{
+      display:"flex",
+      alignItems: "center",
+      justifyContent:"space-between",
+      color:"#6B7280",
+      fontWeight:"bold",
+      padding: "2% 10%",
+      borderBottom:"1px solid black"
+    },
+    filter:{
+      cursor:"pointer",
     }
   });
   

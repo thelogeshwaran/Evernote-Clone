@@ -6,66 +6,79 @@ import styles from "./Styles.js"
 import SidebarItem from "../SidebarItem/SidebarItem"
 import { useFirestore } from "../Firebase/Firebase";
 import firebase from "firebase"
-import { useNotes } from "../Context/NotesProvider.js";
-
+import { useNotes } from "../Context/NotesProvider";
+import "../App.css";
+import { useAuthProvider } from "../Context/AuthProvider";
+import { BiFilterAlt } from "react-icons/bi";
 
 
 
 function Sidebar({classes}){
 
-    const { notes, setSelectNote } = useNotes();
-    // console.log("notes")
-    const [title , setTitle] = useState("");
-    const [ addingNote , setAddingNote] = useState(false);
+    const { notes, setSelectNote, addingNote, setAddingNote} = useNotes();
+    const { user } = useAuthProvider();
+    const [newTitle , setNewTitle] = useState("");
+    const [ newnote, setNewnote] = useState(false);
+    // console.log(newnote)
     
     useEffect(()=>{
-        setSelectNote(notes[0])
-    },[title])
+        if(newnote){
+            setSelectNote(notes[0])
+        }
+    },[newTitle])
 
 
     function newNoteClick(){
         setAddingNote(!addingNote);
-        setTitle("");
+        setNewTitle("");
     }
 
     async function  newNoteSubmit(){
-
-        
         await useFirestore
         .collection("notes")
         .add({
-            title : title,
+            userId : user.uid,
+            title : newTitle,
             body : "",
+            tag:"common",
+            pinned : false,
             timeStamp : firebase.firestore.FieldValue.serverTimestamp()
         }
-
-        )
-        setAddingNote(!addingNote);
-        setTitle("");
+        )    
+        setAddingNote(false);
+        setNewnote(true);
+        setNewTitle("");
+        
         
     }
-
+    // console.log(notes)
     return(
         <div
         className={ classes.sidebarContainer }>
-        <Button className={ classes.newNoteBtn } onClick={ () => newNoteClick() }>{ addingNote ? "CANCEL" : "NEW NOTE" }</Button>
+            <div className={classes.sidebarHeading}>
+                <div><h3>Notes</h3></div>
+                <div className={classes.filter}><BiFilterAlt/></div>
+            </div> 
+            <Button className={ classes.newNoteBtn } onClick={ () => newNoteClick() }>{ addingNote ? "CANCEL" : "NEW NOTE" }</Button>
         {
             addingNote ? <div>
-                <input className={ classes.newNoteInput } placeholder="Enter a new title" onKeyUp={ (e)=> setTitle(e.target.value) }></input>
-                <Button  className={ classes.newNoteSubmitBtn } onClick={()=> newNoteSubmit()} disabled={ !title }>SUBMIT</Button>
+                <input className={ classes.newNoteInput } autoFocus={true} placeholder="Enter a new title" onKeyUp={ (e)=> setNewTitle(e.target.value) }></input>
+                <Button  className={ classes.newNoteSubmitBtn } onClick={()=> newNoteSubmit()} disabled={ !newTitle }>SUBMIT</Button>
             </div> 
             
             
             : null
   
         }
-        <List>
-            <div style={{display:"flex", justifyContent:"space-around"}}>
+        <div>
+        <div className={classes.sidebarContent} >
                 <div>Title </div>
                 <div>Tags</div>
             </div>
+        <List>
+            
             {
-                notes.map((note, index)=>{
+               notes && notes.map((note, index)=>{
                     return (
                         <div key={index}>
                             <SidebarItem note={note}>
@@ -74,10 +87,12 @@ function Sidebar({classes}){
                         </div>
                         
                     )
-                })
+                   }
+                )
             }
         </List>
         </div>
+    </div>
     )
 }
 

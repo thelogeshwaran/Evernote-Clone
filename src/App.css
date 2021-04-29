@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lato:wght@700&family=Yeseva+One&display=swap');
+
+
 html, body {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 0%;
   overflow-y: hidden;
 }
 #evernote-container {
@@ -11,19 +14,24 @@ html, body {
   box-sizing: border-box;
 }
 
-.quill {
+.quill {  
   height: 100%;
   box-sizing: border-box;
-  width: calc(100% - 300px);
+  width: calc(100% - 30%);
   float: left;
+ 
 }
 .ql-container {
   box-sizing: border-box;
-  height: calc(100% - 42px);
-  overflow-y: scroll;
+  height: 90%;
+  /* border: 3px solid red; */
+  /* overflow-y: scroll; */
 }
 .ql-editor {
   cursor: text;
+  height: inherit;
+  padding-bottom: 7%;
+  font-size: 1.5rem;
 }
 .MuiListItem-root.Mui-selected {
   background-color: #d4d8e8 !important;
@@ -36,23 +44,26 @@ html, body {
 }
   
 .app-container {
+  display: grid;
+  grid-template-columns: 1.5fr 8fr;
   height: 100%;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 2fr 9fr;
-  /* grid-template-areas: "header content"; */
+  font-size: 1.1rem;
+  
+  /* border: 2px solid red; */
 }
 
 .navigation{
-  /* border: 1px solid black; */
-  /* grid-area: "header"; */
-  height: 100%;
+  /* border: 10px solid black; */
+  width: 10%;
+  height: 100vh;
 }
 
-.content{
-  /* border: 1px solid black; */
-  /* grid-area: "content"; */
+.contents{
+  /* border: 2px solid red; */
+  width: 100%;
   height: 100%;
+
 }
 
 /* Navigation Bar */
@@ -66,13 +77,17 @@ html, body {
   min-width: 10%;
   background-color: #222222;
   color: white;
-  
+  /* justify-content: space-between; */  
 }
+
+.app-heading{
+  font-family: 'Lato', sans-serif;
+} 
 
 .unordered-list {
   list-style: none;
-  padding:5%;
-  padding-top: 20%;
+  padding:4%;
+  /* padding-top: 20%; */
 }
 
 .list button {
@@ -81,6 +96,7 @@ html, body {
   border: none;
   padding-left: 5%;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .list {
@@ -91,7 +107,7 @@ html, body {
 }
 
 .new-note-list{
-  background-color: rgb(31, 212, 31);
+  background-color: #00A82D;
   border-radius: 50px;
   padding: 5%;
 }
@@ -103,60 +119,111 @@ html, body {
   border: none;
   background-color: #3F403F;
   color: white;
+  font-size: 1.2rem;
 }
 
 .search-list{
   background-color: #3F403F;
   border-radius: 50px;
 }
+.nav-link{
+  
+  display: flex;
+  width: 100%;
+  align-items: center;
+  color: white;
+  text-decoration: none ;
+}
 
-
+.profile {
+  margin-top: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
 /* Home page */
 
-
+.homepage-header{
+  padding-left: 8%;
+  border-bottom: 2px solid green;
+  width: auto;
+}
 .notes{
-  margin: 5%;
+  margin: 3%;
+  margin-left: 5%;
   padding: 3%;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   border-radius: 30px;
   /* border: 1px solid black; */
   height: 60%;
-  overflow-y: scroll  ;
+  overflow-y: auto  ;
   
 }
 .cards{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  
 }
 
 .card {
   margin: 2%;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-}
-
-body::-webkit-scrollbar {
-  width: 1em;
-}
- 
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
- 
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
+  cursor: pointer;
 }
 
 
-/* Title Editor */
+/* Editor */
 
-.title-editor{
+
+.editor-tags{
   display: flex;
-  /* width: 100%; */
-  background-color: #1FD41F;
-  justify-content: center;
+  align-items: flex-start;
+  /* border: 1px solid red; */
+  width: 70%;
+  justify-content: space-between;
+  margin-left: 2%;
+}
+.delete-content{
+  display: flex;
+  align-items: center;
+  width: 40%;
+ justify-content: center;
+ padding-right: 5% ;
+ /* border: 1px solid black; */
+}
+
+
+.tags{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* border: 1px solid blue; */
+}
+
+
+.pinned{
+  display: flex;
   align-items: center;
 }
+
+
+/* SideBarItem */
+
+.note{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  cursor: pointer;
+}
+
+.note-tag{
+  /* font-weight: bold; */
+  color:#4B5563;
+  font-size: 1rem;
+}
+

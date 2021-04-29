@@ -14,5 +14,6 @@ var firebaseConfig = {
 
 
   const useFirestore = firebase.firestore();
+  const auth = firebase.auth();
 
-  export { useFirestore };
+  export { useFirestore, auth};
