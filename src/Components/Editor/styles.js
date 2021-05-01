@@ -1,9 +1,6 @@
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    // height: 'calc(100% - 35px)',
-    // position: 'absolute',
-    // left: '0',
     width: '300px',
     boxShadow: '0px 0px 2px black'
   },
@@ -26,13 +23,6 @@ const styles = theme => ({
     backgroundColor:'inherit',
     paddingLeft: "10px"
   },
-  editorContainer: {
-    height: '85vh',
-    boxSizing: 'border-box',
-    width:"100%",
-    // border :"5px solid red"
-   
-  },
   editorHeading: {
     display:"flex",
     backgroundColor:"#4ADE80",
@@ -41,11 +31,11 @@ const styles = theme => ({
   editorFooter: {
     display:"flex",
     border:"1px solid white",
-    
     width:"auto",
     justifyContent:"space-between",
     alignItems: "center",
-    
+    overflowX:"hidden",
+    overflowY:"hidden"
   },
   editorTitle : {
     display:"flex",

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lato:wght@700&family=Yeseva+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lato:wght@700&family=Yeseva+One&display=swap");
 
-
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
@@ -9,30 +9,26 @@ html, body {
   padding: 0%;
   overflow-y: hidden;
 }
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: #cfd8dc;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #90a4ae;
+  border-radius: 6px;
+  border: 3px solid #cfd8dc;
+}
+
 #evernote-container {
   height: 100%;
   box-sizing: border-box;
 }
 
-.quill {  
-  height: 100%;
-  box-sizing: border-box;
-  width: calc(100% - 30%);
-  float: left;
- 
-}
-.ql-container {
-  box-sizing: border-box;
-  height: 90%;
-  /* border: 3px solid red; */
-  /* overflow-y: scroll; */
-}
-.ql-editor {
-  cursor: text;
-  height: inherit;
-  padding-bottom: 7%;
-  font-size: 1.5rem;
-}
 .MuiListItem-root.Mui-selected {
   background-color: #d4d8e8 !important;
 }
@@ -42,188 +38,44 @@ html, body {
   top: 50px;
   left: calc(50% - 165px);
 }
-  
+
 .app-container {
   display: grid;
   grid-template-columns: 1.5fr 8fr;
   height: 100%;
   box-sizing: border-box;
   font-size: 1.1rem;
-  
-  /* border: 2px solid red; */
 }
 
-.navigation{
-  /* border: 10px solid black; */
+.navigation {
   width: 10%;
   height: 100vh;
 }
 
-.contents{
-  /* border: 2px solid red; */
+.contents {
   width: 100%;
   height: 100%;
-
 }
 
-/* Navigation Bar */
-.nav-tab{
-  /* position: fixed; */
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border: 1px solid black;
-  min-height: 100vh;
-  min-width: 10%;
-  background-color: #222222;
-  color: white;
-  /* justify-content: space-between; */  
+.mobile {
+  display: none;
 }
 
-.app-heading{
-  font-family: 'Lato', sans-serif;
-} 
+@media (max-width: 768px) {
+  .app-container {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    height: 100%;
+    box-sizing: border-box;
+  }
 
-.unordered-list {
-  list-style: none;
-  padding:4%;
-  /* padding-top: 20%; */
+  .navigation {
+    height: 100vh;
+    width: 1%;
+  }
+
+  .desktop {
+    display: none;
+    background-color: red;
+  }
 }
-
-.list button {
-  background-color: inherit;
-  color: white;
-  border: none;
-  padding-left: 5%;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-.list {
-  display: flex;
-  align-items:center;
-  margin-bottom: 10%;
-  padding: 4%
-}
-
-.new-note-list{
-  background-color: #00A82D;
-  border-radius: 50px;
-  padding: 5%;
-}
-
-
-.search{
-  width: 100%;
-  border-radius: 50px;
-  border: none;
-  background-color: #3F403F;
-  color: white;
-  font-size: 1.2rem;
-}
-
-.search-list{
-  background-color: #3F403F;
-  border-radius: 50px;
-}
-.nav-link{
-  
-  display: flex;
-  width: 100%;
-  align-items: center;
-  color: white;
-  text-decoration: none ;
-}
-
-.profile {
-  margin-top: 60%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  
-}
-/* Home page */
-
-.homepage-header{
-  padding-left: 8%;
-  border-bottom: 2px solid green;
-  width: auto;
-}
-.notes{
-  margin: 3%;
-  margin-left: 5%;
-  padding: 3%;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  border-radius: 30px;
-  /* border: 1px solid black; */
-  height: 60%;
-  overflow-y: auto  ;
-  
-}
-.cards{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  
-}
-
-.card {
-  margin: 2%;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  cursor: pointer;
-}
-
-
-/* Editor */
-
-
-.editor-tags{
-  display: flex;
-  align-items: flex-start;
-  /* border: 1px solid red; */
-  width: 70%;
-  justify-content: space-between;
-  margin-left: 2%;
-}
-.delete-content{
-  display: flex;
-  align-items: center;
-  width: 40%;
- justify-content: center;
- padding-right: 5% ;
- /* border: 1px solid black; */
-}
-
-
-.tags{
-  display: flex;
-  align-items: center;
-  width: 100%;
-  /* border: 1px solid blue; */
-}
-
-
-.pinned{
-  display: flex;
-  align-items: center;
-}
-
-
-/* SideBarItem */
-
-.note{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 5%;
-  cursor: pointer;
-}
-
-.note-tag{
-  /* font-weight: bold; */
-  color:#4B5563;
-  font-size: 1rem;
-}
-

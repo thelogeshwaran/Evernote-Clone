@@ -1,0 +1,96 @@
+.quill {
+  height: 100%;
+  box-sizing: border-box;
+  width: calc(100% - 35%);
+  float: left;
+}
+
+.ql-container {
+  box-sizing: border-box;
+  height: 90%;
+}
+
+.ql-editor {
+  cursor: text;
+  height: 95%;
+  padding-bottom: 7%;
+  font-size: 1.2rem;
+}
+
+.editor-tags {
+  display: flex;
+  align-items: flex-start;
+  width: 70%;
+  justify-content: space-between;
+  margin-left: 2%;
+}
+.delete-content {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  justify-content: center;
+  padding-right: 5%;
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.pinned {
+  display: flex;
+  align-items: center;
+}
+.editor-container {
+  height: 85vh;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .editor-container {
+    height: 80vh;
+  }
+  .ql-container {
+    box-sizing: border-box;
+    height: 57vh;
+  }
+  .ql-editor {
+    cursor: text;
+    height: 95%;
+    padding-bottom: 8%;
+    font-size: 1rem;
+  }
+  .quill {
+    height: 75vh;
+    box-sizing: border-box;
+    width: calc(100% - 35%);
+    float: left;
+  }
+  .editor-footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .editor-tags {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 3%;
+    margin-top: 3%;
+  }
+
+  .delete-content {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: space-around;
+    padding: 2%;
+  }
+
+  .desktop {
+    display: none;
+  }
+}

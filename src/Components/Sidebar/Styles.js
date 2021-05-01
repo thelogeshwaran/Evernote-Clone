@@ -19,7 +19,6 @@ const styles = theme => ({
     newNoteBtn: {
       width: '100%',
       height: '30px',
-      // borderBottom: '1px solid black',
       borderRadius: '0px',
       backgroundColor: '#16A34A',
       color: 'white',
@@ -29,15 +28,12 @@ const styles = theme => ({
     },
     sidebarContainer: {
       marginTop: '0px',
-      width: '30%',
-      height: '100vh',
+      width: '35%',    
       boxSizing: 'border-box',
       float: 'left',
-      overflowY: 'auto',
-      overflowX: 'hidden',
-      paddingBottom:"3%",
-      borderRight:"1px solid grey"
-      // border:"2px solid black"
+      border:"1px solid grey",
+      overflowX:"hidden",
+      overflowY:"hidden"
     },
     newNoteInput: {
       width: '100%',
@@ -77,11 +73,13 @@ const styles = theme => ({
       color:"#6B7280",
       fontWeight:"bold",
       padding: "2% 10%",
-      borderBottom:"1px solid black"
+      borderBottom:"1px solid black",
+      
     },
     filter:{
       cursor:"pointer",
-    }
+    },
+
   });
   
   export default styles;
