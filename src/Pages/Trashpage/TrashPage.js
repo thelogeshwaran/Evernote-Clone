@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardContent from "@material-ui/core/CardContent";
 import "../../App.css";
-import { removeHTMLTags } from "../../Components/helpers";
+import { removeHTMLTags } from "../../Components/Helpers/helpers";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useFirestore } from "../../Components/Firebase/Firebase";
 import RestoreIcon from "@material-ui/icons/Restore";

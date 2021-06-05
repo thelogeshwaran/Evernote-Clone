@@ -3,8 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { removeHTMLTags } from "../helpers";
-import { useFirestore } from "../Firebase/Firebase";
+import { removeHTMLTags } from "../Helpers/helpers";
 import { useNotes } from "../../Context/NotesProvider";
 import "../../App.css";
 import "./SidebarItem.css";
@@ -12,7 +11,7 @@ import "./SidebarItem.css";
 function SidebarItem({ classes, note }) {
   const { selectNote, setSelectNote } = useNotes();
 
-  // console.log(note)
+ 
   return (
     <div
       className="note"

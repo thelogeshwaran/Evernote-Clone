@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router";
 import { useNotes } from "./NotesProvider";
 import { useFirestore } from "../Components/Firebase/Firebase";
 
@@ -28,8 +27,9 @@ export const EditorProvider = ({ children }) => {
     });
   };
 
-  const handleNewTag = () => {
-    setNewTag("");
+ const handleNewTag = () => {
+    if(newTag){
+      setNewTag("");
 
     useFirestore
       .collection("tags")
@@ -37,10 +37,11 @@ export const EditorProvider = ({ children }) => {
       .update({
         tags: [...tagOptions.data.tags, newTag],
       });
+    }
   };
 
   const deleteNote = async (note) => {
-    // console.log(note)
+   
     const index = notes.indexOf(note);
     console.log(index);
     if (index > 0) {

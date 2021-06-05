@@ -1,5 +1,6 @@
 import firebase from "firebase";
 
+
 var firebaseConfig = {
   apiKey: "AIzaSyAC_XiXtdXVB1D6jF-DeuNfDPKHvjBrrbM",
   authDomain: "evernote-clone-app-c2308.firebaseapp.com",

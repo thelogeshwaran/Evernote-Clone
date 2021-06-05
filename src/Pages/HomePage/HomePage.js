@@ -2,7 +2,7 @@ import React from "react";
 import CardContent from "@material-ui/core/CardContent";
 import { useNotes } from "../../Context/NotesProvider";
 import "../../App.css";
-import { removeHTMLTags } from "../../Components/helpers";
+import { removeHTMLTags } from "../../Components/Helpers/helpers";
 import NoteAddIcon from "@material-ui/icons/NoteAdd";
 import { useNavigate } from "react-router-dom";
 import { useAuthProvider } from "../../Context/AuthProvider";

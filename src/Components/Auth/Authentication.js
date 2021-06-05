@@ -5,13 +5,14 @@ import { auth } from "../Firebase/Firebase";
 import firebase from "firebase";
 import { useAuthProvider } from "../../Context/AuthProvider";
 import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
+import MuiAlert from "@material-ui/lab/Alert";
+import { toast } from "react-toastify";
+
+
 
 function Auth() {
   const [open, setOpen] = useState(false);
-
   const { user, setUser } = useAuthProvider();
-
   const [rightPanel, setRightPanel] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,23 +20,19 @@ function Auth() {
   const [error, setError] = useState("");
   const [newUser, setNewUser] = useState(false);
 
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(false);
-        console.log("no user");
-      }
-    });
-  }, []);
+  
 
-  function Alert(props: AlertProps) {
+  function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
   const handleClick = () => {
     setOpen(true);
   };
+
+  const fillForm = ()=>{
+    setEmail("testuser@gmail.com")
+    setPassword("test@45")
+  }
 
   const signInGoogle = async () => {
     try {
@@ -52,7 +49,6 @@ function Auth() {
   };
 
   const handleSignUp = () => {
-    // console.log("signup")
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
@@ -116,6 +112,7 @@ function Auth() {
               <button className="button" onClick={() => handleSignUp()}>
                 Sign Up
               </button>
+              
             </form>
           </div>
 
@@ -145,6 +142,9 @@ function Auth() {
               {/* <a href="#">Forgot your password?</a> */}
               <button className="button" onClick={() => handleSignIn()}>
                 Sign In
+              </button>
+              <button className="button guest" onClick={() => fillForm()}>
+                Guest
               </button>
             </form>
           </div>
@@ -179,10 +179,7 @@ function Auth() {
                 >
                   Sign Up
                 </button>
-                <p style={{ fontSize: "0.9rem" }}>
-                  Demo credentials - gmail: testuser@gmail.com | password:
-                  test@45
-                </p>
+                
               </div>
             </div>
           </div>
@@ -239,10 +236,6 @@ function Auth() {
                     Sign In
                   </button>
                 )}
-                <p style={{ fontSize: "0.9rem" }}>
-                  Demo credentials - gmail: testuser@gmail.com | password:
-                  test@45
-                </p>
               </form>
             </div>
           </div>

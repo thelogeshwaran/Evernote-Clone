@@ -6,15 +6,11 @@ import Navigation from "./Components/Navigation/Navigation";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Editpage from "./Pages/EditorPage/Editorpage";
 import TrashPage from "./Pages/Trashpage/TrashPage";
-import Authentication from "./Components/Auth/Authentication";
 import { useAuthProvider } from "./Context/AuthProvider";
-import { useAuthState } from "react-firebase-hooks/auth";
 import Login from "./Pages/LoginPage/LoginPage";
 
 function App() {
   const { user } = useAuthProvider();
-
-  console.log("app", user);
   return (
     <div className="app-container">
       {user === false ? (

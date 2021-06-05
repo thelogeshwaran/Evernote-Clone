@@ -2,14 +2,9 @@
 
 .content {
   box-sizing: border-box;
-  /* background: #f6f5f7; */
-  /* display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column; */
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  /* margin: -20px 0 50px; */
+  
 }
 
 .content > h1 {
@@ -227,6 +222,10 @@ form {
 
 .mobile-login {
   display: none;
+}
+
+.guest {
+  margin-top: 7px;
 }
 
 @media (max-width: 768px) {

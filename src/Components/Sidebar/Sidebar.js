@@ -10,14 +10,14 @@ import { useNotes } from "../../Context/NotesProvider";
 import "../../App.css";
 import "./Sidebar.css";
 import { useAuthProvider } from "../../Context/AuthProvider";
-import { BiFilterAlt } from "react-icons/bi";
+
+
 
 function Sidebar({ classes }) {
   const { notes, setSelectNote, addingNote, setAddingNote } = useNotes();
   const { user } = useAuthProvider();
   const [newTitle, setNewTitle] = useState("");
   const [newnote, setNewnote] = useState(false);
-  // console.log(newnote)
 
   useEffect(() => {
     if (newnote) {
@@ -29,21 +29,24 @@ function Sidebar({ classes }) {
     setAddingNote(!addingNote);
     setNewTitle("");
   }
+ 
 
   async function newNoteSubmit() {
-    await useFirestore.collection("notes").add({
-      userId: user.uid,
-      title: newTitle,
-      body: "",
-      tag: "common",
-      pinned: false,
-      timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
-    setAddingNote(false);
-    setNewnote(true);
-    setNewTitle("");
+    if(newTitle){
+      useFirestore.collection("notes").add({
+        userId: user.uid,
+        title: newTitle,
+        body: "",
+        tag: "common",
+        pinned: false,
+        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+      setAddingNote(false);
+      setNewnote(true);
+      setNewTitle("");
+    }
   }
-  // console.log(notes)
+  
   return (
     <div className={classes.sidebarContainer}>
       <div className="sidebar">
